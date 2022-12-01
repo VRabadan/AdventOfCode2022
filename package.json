@@ -1,0 +1,19 @@
+{
+  "name": "adventofcode_2022",
+  "version": "1.0.0",
+  "description": "Advent of code 2022",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VRabadan/AdventOfCode2022.git"
+  },
+  "author": "VRabadan",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/VRabadan/AdventOfCode2022/issues"
+  },
+  "homepage": "https://github.com/VRabadan/AdventOfCode2022#readme"
+}
