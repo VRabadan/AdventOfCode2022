@@ -12,7 +12,7 @@ const dataArray = splitLines(data);
 const calories = dataArray.reduce((p, c) => (c ? p[p.length - 1] += parseInt(c) : p.push(0), p), [0]);
 
 sortDesc(calories);
-console.log(calories[0]);
-console.log(sumSome(calories, 3));
+console.log(`Part 1: ${calories[0]}`);
+console.log(`Part 2: ${sumSome(calories, 3)}`);
 
 
