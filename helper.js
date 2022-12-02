@@ -32,31 +32,23 @@ function sumSome(data, n) {
     let score = 0;
     const [first, second] = data.split(' ');
     if (first === 'A' && second === 'X') {
-        score += 3;
-    } else if (first === 'B' && second === 'Y') {
-        score += 3;
-    } else if (first === 'C' && second === 'Z') {
-        score += 3;
+        score += 1+3;
     } else if (first === 'A' && second === 'Y') {
-        score += 6;
+        score += 2+6;
     } else if (first === 'A' && second === 'Z') {
-        score += 0;
+        score += 3+0;
     } else if (first === 'B' && second === 'X') {
-        score += 0;
+        score += 1+0;
+    } else if (first === 'B' && second === 'Y') {
+        score += 2+3;
     } else if (first === 'B' && second === 'Z') {
-        score += 6;
+        score += 3+6;
     } else if (first === 'C' && second === 'X') {
-        score += 6;
+        score += 1+6
     } else if (first === 'C' && second === 'Y') {
-        score += 0;
-    }
-
-    if (second === 'X'){
-        score += 1;
-    } else if (second === 'Y') {
-        score += 2;
-    } else if (second === 'Z') {
-        score += 3;
+        score += 2+0;
+    } else if (first === 'C' && second === 'Z') {
+        score += 3+3;
     }
     return score;
 }
@@ -87,7 +79,6 @@ function rPsCristalBall(data) {
     } else if (first === 'C' && second === 'Z') {
         score += 6+1;
     }
-
     return score;
 }
 
