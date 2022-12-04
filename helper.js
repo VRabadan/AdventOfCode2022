@@ -8,6 +8,15 @@ function splitLines(data) {
     return data.split('\n');
 }
 
+function splitAndGroupLines(data) {
+    const lines = data.split('\n');
+    const groups = [];
+    for (let i = 0; i < lines.length; i += 3) {
+        groups.push(lines.slice(i, i + 3));
+    }
+    return groups;
+}
+
 function splitSpace(data) {
     return data.split(' ');
 }
@@ -82,6 +91,47 @@ function rPsCristalBall(data) {
     return score;
 }
 
+function splitString(item) {
+    const first = item.substring(0, item.length / 2);
+    const second = item.substring(item.length / 2);
+    return [first.trim(), second.trim()];
+}
+
+function findRepeated(data){
+    let chars = '';
+    for (let i = 0; i < data[0].length; i++) {
+        const found = [];
+        for (let j = 1; j < data.length; j++) {
+            data[j].includes(data[0][i]) ? found.push(true) : null;
+        }
+    found.length === data.length - 1 ? chars += data[0][i] : null;
+    }
+    return chars;
+}
+
+function fullIntervalOverlap(data) {
+    const [first, second] = data;
+    const [firstStart, firstEnd] = first.split('-').map(x => parseInt(x));
+    const [secondStart, secondEnd] = second.split('-').map(x => parseInt(x));
+    if (firstStart <= secondStart && firstEnd>= secondEnd) {
+        return true;
+    } else if (secondStart <= firstStart && secondEnd >= firstEnd) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function someIntervalOverlap(data) {
+    const [first, second] = data;
+    const [x1, x2] = first.split('-').map(x => parseInt(x));
+    const [y1, y2] = second.split('-').map(x => parseInt(x));
+    return (x1 >= y1 && x1 <= y2) ||
+            (x2 >= y1 && x2 <= y2) ||
+            (y1 >= x1 && y1 <= x2) ||
+            (y2 >= x1 && y2 <= x2);
+}
+
 module.exports = {
     readInput,
     splitLines,
@@ -91,4 +141,9 @@ module.exports = {
     splitSpace,
     rockPaperScissors,
     rPsCristalBall,
+    splitString,
+    findRepeated,
+    splitAndGroupLines,
+    fullIntervalOverlap,
+    someIntervalOverlap,
 }
