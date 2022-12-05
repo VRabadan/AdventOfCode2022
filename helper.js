@@ -111,8 +111,8 @@ function findRepeated(data){
 
 function fullIntervalOverlap(data) {
     const [first, second] = data;
-    const [firstStart, firstEnd] = first.split('-').map(x => parseInt(x));
-    const [secondStart, secondEnd] = second.split('-').map(x => parseInt(x));
+    const [firstStart, firstEnd] = first.split('-').map(Number);
+    const [secondStart, secondEnd] = second.split('-').map(Number);
     if (firstStart <= secondStart && firstEnd>= secondEnd) {
         return true;
     } else if (secondStart <= firstStart && secondEnd >= firstEnd) {
@@ -124,12 +124,43 @@ function fullIntervalOverlap(data) {
 
 function someIntervalOverlap(data) {
     const [first, second] = data;
-    const [x1, x2] = first.split('-').map(x => parseInt(x));
-    const [y1, y2] = second.split('-').map(x => parseInt(x));
+    const [x1, x2] = first.split('-').map(Number);
+    const [y1, y2] = second.split('-').map(Number);
     return (x1 >= y1 && x1 <= y2) ||
             (x2 >= y1 && x2 <= y2) ||
             (y1 >= x1 && y1 <= x2) ||
             (y2 >= x1 && y2 <= x2);
+}
+
+function generateStacks(data) {
+    const stacks = [];
+    let first = true;
+    for (let i = data.length - 1; i >= 0; i--) {
+        let index = 0;
+        for (let j = 1; j < data[i].length; j+=4) {
+            first ? stacks.push([]) : null;
+            data[i][j] != ' ' ? stacks[index].push(data[i][j]) : null;
+            index +=1;
+        }
+        first = false;
+    }
+    return stacks;
+}
+
+function hannoiSequential(towers, moves) {
+    const [howMany, from, to] = moves.split(' ');
+    //move the containers in the stacks according to the move instructions, but one at a time.
+    for (let index = 0; index < howMany; index++) {
+        towers[to-1].push(...towers[from-1].splice(towers[from-1].length-1, 1));
+    }
+    return towers;
+}
+
+function hannoiBulk(towers, moves) {
+    const [howMany, from, to] = moves.split(' ');
+    //move the containers in the stacks according to the move instructions, but on groups.
+    towers[to-1].push(...towers[from-1].splice(towers[from-1].length-howMany, howMany));
+    return towers;
 }
 
 module.exports = {
@@ -146,4 +177,7 @@ module.exports = {
     splitAndGroupLines,
     fullIntervalOverlap,
     someIntervalOverlap,
+    generateStacks,
+    hannoiBulk,
+    hannoiSequential,
 }
