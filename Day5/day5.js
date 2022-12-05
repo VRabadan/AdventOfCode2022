@@ -6,7 +6,7 @@ const rawinput = readInput(file);
 const rawdata = splitLines(rawinput);
 
 //remember that instructions are ALL "MOVE X from Y to Z" so we only keep the numbers.
-const [...instructions] = rawdata.slice(rawdata.indexOf('')+1).map((line) => line.replace(/[^0-9]/g, ' ').trim().replace(/ +/g, ' '));
+const [...instructions] = rawdata.slice(rawdata.indexOf('')+1).map((line) => line.replace(/[^\d]/g, ' ').trim().replace(/ +/g, ' '));
 const numberOfStacks = rawdata.slice(rawdata.indexOf('')-1, rawdata.indexOf('')).pop().split(' ').pop();
 
 //Generate two stacks as we are going to apply two different transformations

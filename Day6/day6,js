@@ -1,0 +1,6 @@
+const { readInput, splitLines,  } = require('../helper.js');
+
+// get path from parameters
+const file = process.argv[2] ? process.argv[2] : 'day6/testinput.txt';
+const rawinput = readInput(file);
+const rawdata = splitLines(rawinput);
