@@ -163,6 +163,16 @@ function hannoiBulk(towers, moves) {
     return towers;
 }
 
+function findUniqueCharSubstring(string, size) {
+    for (let i = 0; i < string.length; i++) {
+        const substring = string.substring(i, i+size);
+        if (new Set(substring).size === size) {
+            //we return the index of the last character of the substring
+            return [substring, i+size];
+        }
+    }
+}
+
 module.exports = {
     readInput,
     splitLines,
@@ -180,4 +190,5 @@ module.exports = {
     generateStacks,
     hannoiBulk,
     hannoiSequential,
+    findUniqueCharSubstring,
 }
