@@ -166,8 +166,9 @@ function hannoiBulk(towers, moves) {
 function findUniqueCharSubstring(string, size) {
     for (let i = 0; i < string.length; i++) {
         const substring = string.substring(i, i+size);
+        // a set can only have unique values, so if the size of the set is the same as the substring, then it is unique
         if (new Set(substring).size === size) {
-            //we return the index of the last character of the substring
+            //we return the index of the last character of the substring too
             return [substring, i+size];
         }
     }
